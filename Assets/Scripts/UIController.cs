@@ -11,12 +11,16 @@ public class UIController : MonoBehaviour
     public GameObject HUD;
     [SerializeField] TextMeshProUGUI hud;
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] TextMeshProUGUI rage;
+    public GameObject rageUI;
+
     public GameObject pauseMenu;
     public GameObject loseMenu;
     public GameObject winMenu;
     public float nyawaPlayer;
     public float nyawaMob;
     public float batasWaktu;
+    private float batasRage;
 
     public UnityEvent customEvent;
     // Start is called before the first frame update
@@ -34,14 +38,16 @@ public class UIController : MonoBehaviour
         UpdateHUD();
 
         //timer
+        if(batasWaktu>0){
         batasWaktu-=Time.deltaTime;
         int menit = Mathf.FloorToInt(batasWaktu/60);
         int detik=Mathf.FloorToInt(batasWaktu%60);
         timer.text=string.Format("{0:00}:{1:00}", menit, detik);
-
         //timer merah dan waktu habis
-        if(batasWaktu<30) timer.color=Color.red;
-        else if(batasWaktu<0) {Time.timeScale=0;losePlay();}
+            if(batasWaktu<30) timer.color=Color.red;   
+            else if(nyawaMob==0) winPlay();         
+        }
+        else if(batasWaktu<0) losePlay();
     }
 
     public void pause(){//menu pause
@@ -56,6 +62,18 @@ public class UIController : MonoBehaviour
         Time.timeScale=1;
     }
 
+    public void rageTime(float ragetime){
+        rageUI.SetActive(true);
+        if(ragetime>0){
+        ragetime-=Time.deltaTime;
+        rage.color=Color.red; 
+        int menit = Mathf.FloorToInt(ragetime/60);
+        int detik=Mathf.FloorToInt(ragetime%60);
+        rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
+        }
+        else if(ragetime<0) rageUI.SetActive(false);
+    }
+
     public void Homie(){//balik homepage
         home.SetActive(true);
         pauseMenu.SetActive(false);
@@ -63,9 +81,15 @@ public class UIController : MonoBehaviour
     }
 
     public void losePlay(){//lose pop up
-        //Time.timeScale=0;
+        Time.timeScale=0;
         HUD.SetActive(false);
         loseMenu.SetActive(true);
+    }
+
+        public void winPlay(){//lose pop up
+        Time.timeScale=0;
+        HUD.SetActive(false);
+        winMenu.SetActive(true);
     }
     public void Mulai(){//mulai game
         home.SetActive(false);
