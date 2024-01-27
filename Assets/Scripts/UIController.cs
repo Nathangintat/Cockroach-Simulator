@@ -17,9 +17,9 @@ public class UIController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject loseMenu;
     public GameObject winMenu;
-    float nyawaPlayer;
-    float nyawaMob;
-    float batasWaktu;
+    public float nyawaPlayer;
+    public float nyawaMob;
+    public float batasWaktu;
     //private float batasRage;
 
     public UnityEvent customEvent;
