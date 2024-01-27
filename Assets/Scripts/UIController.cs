@@ -17,9 +17,9 @@ public class UIController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject loseMenu;
     public GameObject winMenu;
-    public float nyawaPlayer;
-    public float nyawaMob;
-    public float batasWaktu;
+    float nyawaPlayer;
+    float nyawaMob;
+    float batasWaktu;
     //private float batasRage;
 
     public UnityEvent customEvent;
@@ -104,12 +104,12 @@ public class UIController : MonoBehaviour
     }
 
     public void keluar(){//exit game
-        loseMenu.SetActive(true);
+        Application.Quit();
     }
     public void resetNilai(){//balikin value nyawa dan waktu
         nyawaPlayer=3;
         nyawaMob=3;
-        batasWaktu=10;
+        batasWaktu=35;
     }
 
     private void Mouse(){//atur kursor

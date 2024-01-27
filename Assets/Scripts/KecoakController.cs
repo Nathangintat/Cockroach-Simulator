@@ -18,13 +18,13 @@ public class KecoakController : MonoBehaviour
      Vector3 moveDirection = Vector3.zero;
     float rotationX = 0; 
     public bool canMove = true; 
-    Rigidbody _rb;
+    //Rigidbody _rb;
     
     CharacterController characterController;
     UIController uI;
     void Start()
     {
-        _rb=GetComponent<Rigidbody>();
+        //_rb=GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -75,8 +75,8 @@ public class KecoakController : MonoBehaviour
         }
  
         #endregion
-
-        void OnCollisionEnter(Collision collision){
+        }
+                void OnCollisionEnter (Collision collision){
             if(collision.gameObject.name=="Mob"){
                 uI.nyawaMob=uI.nyawaMob-1;
             }
@@ -86,9 +86,6 @@ public class KecoakController : MonoBehaviour
                 else if(collision.gameObject.name=="Radar"){
                 uI.rageTime(5);
             }
-
-
-        }
     }
     // public Transform cam;
 
