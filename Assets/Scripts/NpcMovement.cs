@@ -53,7 +53,7 @@ public class NpcMovement : MonoBehaviour
         return false;
     }
 
-    void Pindahpoint(int titik){
+    void Pindahpoint(int titik){//mob pindah ruangan
         agent.SetDestination(waypoint[titik].position);
 
     }
