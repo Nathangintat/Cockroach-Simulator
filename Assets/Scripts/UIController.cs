@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
     public float nyawaPlayer;
     public float nyawaMob;
     public float batasWaktu;
-    private float batasRage;
+    //private float batasRage;
 
     public UnityEvent customEvent;
     // Start is called before the first frame update
@@ -75,8 +75,11 @@ public class UIController : MonoBehaviour
     }
 
     public void Homie(){//balik homepage
-        home.SetActive(true);
         pauseMenu.SetActive(false);
+        loseMenu.SetActive(false);
+        winMenu.SetActive(false);
+        home.SetActive(true);
+
         Time.timeScale=0;
     }
 
@@ -95,6 +98,8 @@ public class UIController : MonoBehaviour
         home.SetActive(false);
         Time.timeScale=1;
         HUD.SetActive(true);
+        loseMenu.SetActive(false);
+        winMenu.SetActive(false);
         resetNilai();
     }
 

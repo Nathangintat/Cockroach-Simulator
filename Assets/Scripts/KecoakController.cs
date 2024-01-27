@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterController))]
 public class KecoakController : MonoBehaviour
@@ -13,17 +14,17 @@ public class KecoakController : MonoBehaviour
     public float gravity = 10f; 
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
- 
- 
-    Vector3 moveDirection = Vector3.zero;
-    float rotationX = 0;
- 
-    public bool canMove = true;
- 
+
+     Vector3 moveDirection = Vector3.zero;
+    float rotationX = 0; 
+    public bool canMove = true; 
+    Rigidbody _rb;
     
     CharacterController characterController;
+    UIController uI;
     void Start()
     {
+        _rb=GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -74,6 +75,20 @@ public class KecoakController : MonoBehaviour
         }
  
         #endregion
+
+        void OnCollisionEnter(Collision collision){
+            if(collision.gameObject.name=="Mob"){
+                uI.nyawaMob=uI.nyawaMob-1;
+            }
+            else if(collision.gameObject.name=="Baygon"){
+                uI.nyawaPlayer=uI.nyawaPlayer=1;
+            }
+                else if(collision.gameObject.name=="Radar"){
+                uI.rageTime(5);
+            }
+
+
+        }
     }
     // public Transform cam;
 

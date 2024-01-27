@@ -16345,8 +16345,9 @@ GameObject:
   - component: {fileID: 582868739}
   - component: {fileID: 582868742}
   - component: {fileID: 582868741}
+  - component: {fileID: 582868743}
   m_Layer: 0
-  m_Name: model
+  m_Name: Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16417,6 +16418,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582868738}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &582868743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582868738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.9999999, z: 1.0000002}
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940697}
 --- !u!1 &589300959 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0179fa94447469e4981309c45c189665, type: 3}
@@ -22281,7 +22303,6 @@ GameObject:
   - component: {fileID: 785783710}
   - component: {fileID: 785783709}
   - component: {fileID: 785783711}
-  - component: {fileID: 785783712}
   m_Layer: 0
   m_Name: mob
   m_TagString: Untagged
@@ -22341,7 +22362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 785783709}
-  agentCollider: {fileID: 785783712}
+  agentCollider: {fileID: 0}
   radarCollider: {fileID: 1118497035}
   kecoakCollider: {fileID: 949863766}
   range: 100
@@ -22378,29 +22399,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &785783712
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785783707}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.2168374
-  m_Height: 10.56599
-  m_Direction: 1
-  m_Center: {x: -0.24654198, y: 4.782995, z: 0.40824986}
 --- !u!1 &787286806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e558ce5f9cdc1744b8c98e7525e4569d, type: 3}
@@ -26998,12 +26996,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.27
-  m_Radius: 1.29
+  m_Radius: 0.77
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.52, z: 0}
+  m_Center: {x: 0, y: 0.24, z: -0.41}
 --- !u!65 &949863767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27023,8 +27021,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.6908369, z: 1.2660637}
-  m_Center: {x: 0, y: 0.66849375, z: -0.2985592}
+  m_Size: {x: 1.1238962, y: 0.63528013, z: 1.0984306}
+  m_Center: {x: -0.06194812, y: -0.07319355, z: -0.38237572}
 --- !u!1001 &950612978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31830,7 +31828,7 @@ GameObject:
   - component: {fileID: 1118497033}
   - component: {fileID: 1118497035}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
