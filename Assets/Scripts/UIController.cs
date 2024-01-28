@@ -130,7 +130,5 @@ public class UIController : MonoBehaviour
         customEvent.Invoke();
     }
 
-  public void KurangDarah(string tipe){//function klo collide dgn baygon atau mob || BELUM KELAR
-            if(tipe == "Player") nyawaPlayer=nyawaPlayer-1;
-        else if(tipe == "Mob") nyawaMob=nyawaMob-1;    }
+
 }
