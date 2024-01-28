@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
     [Header("UI")]
     public GameObject home;
+    public Transform player;
     public GameObject HUD;
     [SerializeField] TextMeshProUGUI hud;
     [SerializeField] TextMeshProUGUI timer;
@@ -20,8 +20,8 @@ public class UIController : MonoBehaviour
     public GameObject winMenu;
     public float nyawaPlayer;
     public float nyawaMob;
-    public float batasWaktu;
-    //private float batasRage;
+    float batasWaktu;
+    public float rageTime;
 
     public UnityEvent customEvent;
     // Start is called before the first frame update
@@ -38,6 +38,9 @@ public class UIController : MonoBehaviour
 
         UpdateHUD();
 
+        if(nyawaPlayer==1)
+            losePlay();
+        
         //timer
         if(batasWaktu>0){
         batasWaktu-=Time.deltaTime;
@@ -46,10 +49,22 @@ public class UIController : MonoBehaviour
         timer.text=string.Format("{0:00}:{1:00}", menit, detik);
         //timer merah dan waktu habis
             if(batasWaktu<30) timer.color=Color.red;   
-            else if(nyawaMob==0) winPlay();         
+            else if(nyawaMob==1) winPlay();         
         }
         else if(batasWaktu<0) losePlay();
-    }
+
+        // public void rageTime(float ragetime){
+
+        if(rageTime>0){
+        rageUI.SetActive(true);            
+        rageTime-=Time.deltaTime;
+        rage.color=Color.red; 
+        int menit = Mathf.FloorToInt(rageTime/60);
+        int detik=Mathf.FloorToInt(rageTime%60);
+        rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
+        }
+        else if(rageTime<=0) rageUI.SetActive(false);}
+    
 
     public void pause(){//menu pause
         pauseMenu.SetActive(true);
@@ -63,21 +78,25 @@ public class UIController : MonoBehaviour
         Time.timeScale=1;
     }
 
-    public void rageTime(float ragetime){
-        rageUI.SetActive(true);
-        if(ragetime>0){
-        ragetime-=Time.deltaTime;
-        rage.color=Color.red; 
-        int menit = Mathf.FloorToInt(ragetime/60);
-        int detik=Mathf.FloorToInt(ragetime%60);
-        rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
-        }
-        else if(ragetime<0) rageUI.SetActive(false);
-    }
+    // public void rageTime(float ragetime){
+    //     rageUI.SetActive(true);
+    //     if(ragetime>0){
+    //     ragetime-=Time.deltaTime;
+    //     rage.color=Color.red; 
+    //     int menit = Mathf.FloorToInt(ragetime/60);
+    //     int detik=Mathf.FloorToInt(ragetime%60);
+    //     rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
+    //     }
+    //     else if(ragetime<0) rageUI.SetActive(false);
+    // }
 
-    public void Homie() //balik homepage
-    {
-        SceneManager.LoadScene(0);
+    public void Homie(){//balik homepage
+        pauseMenu.SetActive(false);
+        loseMenu.SetActive(false);
+        winMenu.SetActive(false);
+        home.SetActive(true);
+
+        Time.timeScale=0;
     }
 
     public void losePlay(){//lose pop up
@@ -105,8 +124,11 @@ public class UIController : MonoBehaviour
     }
     public void resetNilai(){//balikin value nyawa dan waktu
         nyawaPlayer=3;
-        nyawaMob=3;
-        batasWaktu=35;
+        nyawaMob=5;
+        batasWaktu=180;
+        rageTime=0;
+        player.transform.position=new Vector3(-8.4f, 3f, -65f);
+        //transform.position = transform.position.Change( y: 1.3f );
     }
 
     private void Mouse(){//atur kursor
@@ -119,11 +141,10 @@ public class UIController : MonoBehaviour
     }
 
         private void UpdateHUD(){ //tampilan HUD
-        hud.text = "player : " + nyawaPlayer.ToString() + "\n";
+        hud.text= "player : "+ nyawaPlayer.ToString()+"\n";
         hud.text+= "Mob : "+nyawaMob.ToString();
     }
-
-    public void Interact(){//belum jelas yg ini
-        customEvent.Invoke();
-    }
 }
+    // public void Interact(){//belum jelas yg ini
+    //     customEvent.Invoke();
+    // }

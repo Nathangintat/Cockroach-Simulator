@@ -6,26 +6,29 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CharacterController))]
 public class KecoakController : MonoBehaviour
 {
-    //public CharacterController controller;
-    public Camera playerCamera;
+ public Camera playerCamera;
+ public Animator animator;
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     public float jumpPower = 7f;
-    public float gravity = 10f; 
+    public float gravity = 10f;
+ 
+ 
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
-
-     Vector3 moveDirection = Vector3.zero;
-    float rotationX = 0; 
-    public bool canMove = true; 
-    //Rigidbody _rb;
+ 
+ 
+    Vector3 moveDirection = Vector3.zero;
+    float rotationX = 0;
+ 
+    public bool canMove = true;
+ 
     
     CharacterController characterController;
-    UIController uI;
     void Start()
     {
-        //_rb=GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
+        animator=GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -76,16 +79,6 @@ public class KecoakController : MonoBehaviour
  
         #endregion
         }
-                void OnCollisionEnter (Collision collision){
-            if(collision.gameObject.name=="Mob"){
-                uI.nyawaMob=uI.nyawaMob-1;
-            }
-            else if(collision.gameObject.name=="Baygon"){
-                uI.nyawaPlayer=uI.nyawaPlayer=1;
-            }
-                else if(collision.gameObject.name=="Radar"){
-                uI.rageTime(5);
-            }
     }
     // public Transform cam;
 
@@ -185,4 +178,3 @@ public class KecoakController : MonoBehaviour
     //     rb.AddTorque(transform.forward *roll * responseModifier);
     //     rb.AddTorque(-transform.right *pitch * responseModifier);
     // }
-}
