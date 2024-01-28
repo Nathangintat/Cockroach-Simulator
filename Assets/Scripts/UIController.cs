@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     [Header("UI")]
     public GameObject home;
+    public Transform player;
     public GameObject HUD;
     [SerializeField] TextMeshProUGUI hud;
     [SerializeField] TextMeshProUGUI timer;
@@ -125,6 +126,9 @@ public class UIController : MonoBehaviour
         nyawaPlayer=3;
         nyawaMob=5;
         batasWaktu=180;
+        rageTime=0;
+        player.transform.position=new Vector3(-8.4f, 3f, -65f);
+        //transform.position = transform.position.Change( y: 1.3f );
     }
 
     private void Mouse(){//atur kursor
