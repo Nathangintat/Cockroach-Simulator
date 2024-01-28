@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
         }
         else if(batasWaktu<0) losePlay();
 
-       // public void rageTime(float ragetime){
+        // public void rageTime(float ragetime){
 
         if(rageTime>0){
         rageUI.SetActive(true);            
@@ -123,7 +123,7 @@ public class UIController : MonoBehaviour
     }
     public void resetNilai(){//balikin value nyawa dan waktu
         nyawaPlayer=3;
-        nyawaMob=3;
+        nyawaMob=5;
         batasWaktu=35;
     }
 
