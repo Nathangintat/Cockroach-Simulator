@@ -124,7 +124,7 @@ public class UIController : MonoBehaviour
     public void resetNilai(){//balikin value nyawa dan waktu
         nyawaPlayer=3;
         nyawaMob=5;
-        batasWaktu=35;
+        batasWaktu=180;
     }
 
     private void Mouse(){//atur kursor
