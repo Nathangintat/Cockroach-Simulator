@@ -19060,7 +19060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &631660976
 Transform:
   m_ObjectHideFlags: 0
@@ -19136,7 +19136,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631660975}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22219,6 +22219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716082510}
+  - component: {fileID: 716082511}
   m_Layer: 0
   m_Name: Floors
   m_TagString: Untagged
@@ -22409,6 +22410,37 @@ Transform:
   - {fileID: 2100093343}
   m_Father: {fileID: 1284711010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &716082511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716082509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 5dda1d1daf08ca444a77a77d0444c174, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &717396773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24228,7 +24260,7 @@ Transform:
   m_GameObject: {fileID: 785783707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9, y: 7.3, z: -8.7}
+  m_LocalPosition: {x: -16.8, y: 7.3, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24275,7 +24307,7 @@ MonoBehaviour:
   radarCollider: {fileID: 1118497035}
   kecoakCollider: {fileID: 632699229}
   range: 100
-  centrePoint: {fileID: 631660976}
+  centrePoint: {fileID: 716082510}
   waypoint:
   - {fileID: 1117493035}
   - {fileID: 1147501648}
@@ -34234,13 +34266,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118497030}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.2886044, z: -0, w: 0.9574485}
-  m_LocalPosition: {x: 1.8, y: 0, z: 7.6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7999997, y: 0, z: 6.56}
   m_LocalScale: {x: 10.905689, y: 1, z: 9.457787}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 785783708}
-  m_LocalEulerAnglesHint: {x: 0, y: -33.549, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1118497033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63024,8 +63056,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.791369, z: 1}
-  m_Center: {x: 0, y: 1.051861, z: 0}
+  m_Size: {x: 1, y: 1.950881, z: 1}
+  m_Center: {x: 0, y: 0.9721063, z: 0}
 --- !u!1001 &2007388397
 PrefabInstance:
   m_ObjectHideFlags: 0
