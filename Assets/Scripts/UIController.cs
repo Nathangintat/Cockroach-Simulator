@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -74,13 +75,9 @@ public class UIController : MonoBehaviour
         else if(ragetime<0) rageUI.SetActive(false);
     }
 
-    public void Homie(){//balik homepage
-        pauseMenu.SetActive(false);
-        loseMenu.SetActive(false);
-        winMenu.SetActive(false);
-        home.SetActive(true);
-
-        Time.timeScale=0;
+    public void Homie() //balik homepage
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void losePlay(){//lose pop up
@@ -122,15 +119,11 @@ public class UIController : MonoBehaviour
     }
 
         private void UpdateHUD(){ //tampilan HUD
-        hud.text= "player : "+ nyawaPlayer.ToString()+"\n";
+        hud.text = "player : " + nyawaPlayer.ToString() + "\n";
         hud.text+= "Mob : "+nyawaMob.ToString();
     }
 
     public void Interact(){//belum jelas yg ini
         customEvent.Invoke();
     }
-
-  public void KurangDarah(string tipe){//function klo collide dgn baygon atau mob || BELUM KELAR
-            if(tipe == "Player") nyawaPlayer=nyawaPlayer-1;
-        else if(tipe == "Mob") nyawaMob=nyawaMob-1;    }
 }
