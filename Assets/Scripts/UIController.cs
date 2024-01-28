@@ -19,8 +19,8 @@ public class UIController : MonoBehaviour
     public GameObject winMenu;
     public float nyawaPlayer;
     public float nyawaMob;
-    public float batasWaktu;
-    //private float batasRage;
+    float batasWaktu;
+    public float rageTime;
 
     public UnityEvent customEvent;
     // Start is called before the first frame update
@@ -37,6 +37,9 @@ public class UIController : MonoBehaviour
 
         UpdateHUD();
 
+        if(nyawaPlayer==1)
+            losePlay();
+        
         //timer
         if(batasWaktu>0){
         batasWaktu-=Time.deltaTime;
@@ -45,10 +48,22 @@ public class UIController : MonoBehaviour
         timer.text=string.Format("{0:00}:{1:00}", menit, detik);
         //timer merah dan waktu habis
             if(batasWaktu<30) timer.color=Color.red;   
-            else if(nyawaMob==0) winPlay();         
+            else if(nyawaMob==1) winPlay();         
         }
         else if(batasWaktu<0) losePlay();
-    }
+
+       // public void rageTime(float ragetime){
+
+        if(rageTime>0){
+        rageUI.SetActive(true);            
+        rageTime-=Time.deltaTime;
+        rage.color=Color.red; 
+        int menit = Mathf.FloorToInt(rageTime/60);
+        int detik=Mathf.FloorToInt(rageTime%60);
+        rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
+        }
+        else if(rageTime<=0) rageUI.SetActive(false);}
+    
 
     public void pause(){//menu pause
         pauseMenu.SetActive(true);
@@ -62,17 +77,17 @@ public class UIController : MonoBehaviour
         Time.timeScale=1;
     }
 
-    public void rageTime(float ragetime){
-        rageUI.SetActive(true);
-        if(ragetime>0){
-        ragetime-=Time.deltaTime;
-        rage.color=Color.red; 
-        int menit = Mathf.FloorToInt(ragetime/60);
-        int detik=Mathf.FloorToInt(ragetime%60);
-        rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
-        }
-        else if(ragetime<0) rageUI.SetActive(false);
-    }
+    // public void rageTime(float ragetime){
+    //     rageUI.SetActive(true);
+    //     if(ragetime>0){
+    //     ragetime-=Time.deltaTime;
+    //     rage.color=Color.red; 
+    //     int menit = Mathf.FloorToInt(ragetime/60);
+    //     int detik=Mathf.FloorToInt(ragetime%60);
+    //     rage.text=string.Format("{0:00}:{1:00}", menit, detik);        
+    //     }
+    //     else if(ragetime<0) rageUI.SetActive(false);
+    // }
 
     public void Homie(){//balik homepage
         pauseMenu.SetActive(false);
@@ -125,10 +140,7 @@ public class UIController : MonoBehaviour
         hud.text= "player : "+ nyawaPlayer.ToString()+"\n";
         hud.text+= "Mob : "+nyawaMob.ToString();
     }
-
-    public void Interact(){//belum jelas yg ini
-        customEvent.Invoke();
-    }
-
-
 }
+    // public void Interact(){//belum jelas yg ini
+    //     customEvent.Invoke();
+    // }
